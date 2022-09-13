@@ -109,8 +109,8 @@ class MapboxNavigationView: UIView {
         if(mapView == nil) {
             let myMapInitOptions = MapInitOptions()
             
-            ResourceOptionsManager.default.resourceOptions.accessToken = mapToken as String
             UserDefaults.standard.setValue(self.mapToken, forKey: "MBXAccessToken")
+            ResourceOptionsManager.default.resourceOptions.accessToken = self.mapToken as String
             
             mapView = MapView(frame: bounds, mapInitOptions: myMapInitOptions)
             
@@ -327,6 +327,7 @@ class MapboxNavigationView: UIView {
             options.distanceMeasurementSystem = useImperial ? .imperial : .metric
             
             UserDefaults.standard.setValue(self.navigationToken, forKey: "MBXAccessToken")
+            ResourceOptionsManager.default.resourceOptions.accessToken = self.navigationToken as String
             
             Directions.shared.calculate(options) { [weak self] (session, result) in
                 guard let strongSelf = self, let parentVC = strongSelf.parentViewController else {
@@ -440,3 +441,4 @@ class MapboxNavigationView: UIView {
     }
     
 }
+
