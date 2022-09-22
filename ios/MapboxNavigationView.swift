@@ -230,6 +230,7 @@ class MapboxNavigationView: UIView {
         self.lineAnnotationManager = lineAnnotationManager
         
         updateCameraForAnnotations()
+        updateUserFollowing()
     }
     
     func addPoints() {
